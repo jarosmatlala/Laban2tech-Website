@@ -1,32 +1,42 @@
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import logo from "@/app/assets/Laban- (1).png";
+
 function Header() {
   return (
-    <nav className="flex px-4 md:px-6 lg:px-16 z-10 fixed w-full top-0 left-0 backdrop-blur-lg bg-slate-50 py-4 justify-between items-center">
-      <section className="flex gap-72 items-center">
-        <div>
-          <Image src={logo} alt="logo" height={34} />
-        </div>
-        <ul className="flex text-black font-medium gap-3">
+    <header className="fixed w-full top-0 left-0 z-10 bg-slate-50/80 backdrop-blur-md shadow-sm">
+      <nav className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-3 flex items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2">
+          <Image src={logo} alt="Laban2Tech Logo" height={40} />
+          {/* <span className="font-bold text-lg text-gray-800">Laban2Tech</span> */}
+        </Link>
+
+        {/* Nav Links */}
+        <ul className="hidden md:flex gap-6 text-gray-700 font-medium">
           <li>
-            <Link href="/">Home</Link>
+            <Link href="/" className="hover:text-blue-600 transition-colors">
+              Home
+            </Link>
           </li>
           <li>
-            <Link href="/">About Us</Link>
+            <Link href="/about" className="hover:text-blue-600 transition-colors">
+              About Us
+            </Link>
           </li>
           <li>
-            <Link href="/">Our Course</Link>
+            <Link href="/courses" className="hover:text-blue-600 transition-colors">
+              Our Courses
+            </Link>
           </li>
           <li>
-            <Link href="/">Resources</Link>
+            <Link href="/resources" className="hover:text-blue-600 transition-colors">
+              Resources
+            </Link>
           </li>
         </ul>
-      </section>
-      <Button>Sign In</Button>
-    </nav>
+      </nav>
+    </header>
   );
 }
 
