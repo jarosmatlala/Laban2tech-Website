@@ -288,7 +288,7 @@ export default function Home() {
                   <Button className="bg-pink-600 hover:bg-pink-700">Join</Button>
                 </div>
                 <p className="text-sm text-blue-200">
-                  By subscribing, you consent to our Privacy Policy and receiving
+                  By subscribing, you consent to our Privacy Policies and receiving
                   updates from us.
                 </p>
               </div>
