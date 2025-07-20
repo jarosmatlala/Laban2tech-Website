@@ -7,12 +7,15 @@ type Cart = {
   image: StaticImageData;
   width?: string;
   height?: string;
+  onClick?: () => void;
 };
-export default function Index({ title, paragraph, image }: Cart) {
+export default function Index({ title, paragraph, image, onClick }: Cart) {
   return (
-    <div className="rounded-md overflow-hidden">
+    <div className="rounded-md overflow-hidden"
+      onClick={onClick}>
+
       <div className="w-full  ">
-        <Image alt="" src={image} className={`bg-black   rounded-md`} />
+        <Image alt="" src={image} className={`bg-black rounded-md`} />
       </div>
       <div>
         <h5 className="text-4xl mb-2">{title}</h5>

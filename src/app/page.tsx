@@ -1,3 +1,6 @@
+"use client";
+
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import hero from "./assets/main.jpg";
@@ -6,12 +9,14 @@ import pic2 from "./assets/20231124_131410.jpg";
 import pic3 from "./assets/8G0A8515.jpg";
 import pic4 from "./assets/IMG_0138.jpg";
 import Tsewe from "./assets/Tsewe.jpg";
-
+import black_and_white from "./assets/black_and_white.jpg";
 import siyafunda_1 from "./assets/siyafunda_1.jpg";
 import { Info_Card } from "@/_components";
 import relume from "./assets/Relume.svg";
 import avatar from "./assets/Avatar Image.png";
 import logo from "@/app/assets/Laban- (1).png";
+import Dev2 from "./assets/Dev2.jpg";
+import development from "./assets/development.jpg";
 
 import {
   Facebook,
@@ -25,16 +30,22 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 
 export default function Home() {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
+  const openVideo = () => setIsVideoOpen(true);
+  const closeVideo = () => setIsVideoOpen(false);
+
   return (
     <div>
       {/* Hero Section */}
-      <main className="flex flex-col lg:flex-row px-4 md:px-6 lg:px-16 gap-8 min-h-screen items-center justify-center py-8">
-        <div className="w-full lg:w-1/2 relative">
+      <main className="flex flex-col lg:flex-row px-4 md:px-6 lg:px-16 gap-8 min-h-screen items-center justify-center py-8 bg-blue-500/20">
+        <div className="w-full lg:w-1/2 relative mt-14">
           <Image
             alt="hero"
             // src={pic1}
-           src={Tsewe}
-
+          //  src={black_and_white}
+          // src={Dev2}
+          src={development}
             className="w-full h-[400px] md:h-[500px] lg:h-[600px] object-cover rounded-lg shadow-lg"
           />
         </div>
@@ -43,9 +54,9 @@ export default function Home() {
         {/* <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-6"> */}
         
 
-<div className="w-full lg:w-1/2 relative flex flex-col justify-center space-y-6 overflow-hidden bg-blue-500/20">
+<div className="w-full lg:w-1/2 relative flex flex-col justify-center space-y-6 overflow-hidden ">
   {/* Animated Logo Backgrounds */}
-  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+  <div className="absolute inset-0 flex items-center justify-center pointer-events-none mt-16">
     {[logo, logo, logo].map((img, idx) => (
       <Image
         key={idx}
@@ -108,23 +119,48 @@ export default function Home() {
             <Info_Card
               // image={hero}
                             image={Tsewe}
-
+              // image={Dev2}
               title="Comprehensive Coding and Programming Courses"
               paragraph="Learn the fundamentals of coding and software development."
             />
             <Info_Card
-              image={pic3}
+              image={black_and_white}
+              title="Hands-On Workshops for Real-World Experience"
+              paragraph="Participate in interactive sessions that enhance learning."
+              onClick={openVideo} 
+            />
+       
+            <Info_Card
+              // image={pic3}
+                            image={Dev2}
+
               title="Creative Digital Design and Multimedia Training"
               paragraph="Explore the world of graphic design and video editing."
             />
-            <Info_Card
-              image={siyafunda_1}
-              title="Hands-On Workshops for Real-World Experience"
-              paragraph="Participate in interactive sessions that enhance learning."
-            />
+            
           </div>
         </div>
       </section>
+{/* Modal */}
+      {isVideoOpen && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg overflow-hidden max-w-3xl w-full relative">
+            <button
+              onClick={closeVideo}
+              className="absolute top-2 right-2 text-black text-xl font-bold z-10"
+            >
+              ✕
+            </button>
+            <video controls autoPlay className="w-full h-auto">
+              <source src="/assets/teachOtherVideo.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      )}
+
+
+
 
       {/* Additional Services Section */}
       {/* <section className="min-h-screen px-4 md:px-6 lg:px-16 py-16">
