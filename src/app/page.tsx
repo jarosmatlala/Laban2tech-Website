@@ -10,7 +10,7 @@ import Image from "next/image";
 // import pic4 from "./assets/IMG_0138.jpg";
 import Tsewe from "./assets/Tsewe.jpg";
 import black_and_white from "./assets/black_and_white.jpg";
-import siyafunda_1 from "./assets/siyafunda_1.jpg";
+// import siyafunda_1 from "./assets/siyafunda_1.jpg";
 import { Info_Card } from "@/_components";
 // import relume from "./assets/Relume.svg";
 import avatar from "./assets/Avatar Image.png";
@@ -239,10 +239,15 @@ export default function Home() {
             <StarIcon color="#fbbf24" size={32} />
             <StarIcon color="#fbbf24" size={32} />
           </div>
-          <blockquote className="text-white text-xl md:text-2xl mb-12 italic">
+          {/* <blockquote className="text-white text-xl md:text-2xl mb-12 italic">
             "Laban2tech has transformed my understanding of technology. The skills
             I've gained here have opened new doors for my future."
-          </blockquote>
+          </blockquote> */}
+
+          <blockquote className="text-white text-xl md:text-2xl mb-12 italic">
+  {"Laban2tech has transformed my understanding of technology. The skills I've gained here have opened new doors for my future."}
+</blockquote>
+
           <div className="flex flex-col md:flex-row items-center justify-center gap-8">
             <div className="flex items-center gap-4 text-white">
               <Image src={avatar} alt="avatar" className="rounded-full" />
