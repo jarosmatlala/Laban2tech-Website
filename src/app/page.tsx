@@ -43,7 +43,7 @@ export default function Home() {
         {/* <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-6"> */}
         
 
-<div className="w-full lg:w-1/2 relative flex flex-col justify-center space-y-6 overflow-hidden">
+<div className="w-full lg:w-1/2 relative flex flex-col justify-center space-y-6 overflow-hidden bg-blue-500/20">
   {/* Animated Logo Backgrounds */}
   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
     {[logo, logo, logo].map((img, idx) => (
