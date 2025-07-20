@@ -19,11 +19,11 @@ function Header() {
               Home
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link href="/about" className="hover:text-blue-600 transition-colors">
               About Us
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link href="/courses" className="hover:text-blue-600 transition-colors">
               Our Courses
