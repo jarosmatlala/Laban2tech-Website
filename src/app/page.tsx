@@ -38,7 +38,13 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <main className="flex flex-col lg:flex-row px-4 md:px-6 lg:px-16 gap-8 min-h-screen items-center justify-center py-8 bg-blue-500/20">
+      {/* <main className="flex flex-col lg:flex-row px-4 md:px-6 lg:px-16 gap-8 min-h-screen items-center justify-center py-8 bg-blue-500/20"> */}
+
+       <main 
+    className="flex flex-col lg:flex-row px-4 md:px-6 lg:px-16 gap-8 min-h-screen items-center justify-center py-8" 
+    style={{ backgroundColor: "#00497A" }}
+  >
+      
         <div className="w-full lg:w-1/2 relative mt-14">
           <Image
             alt="hero"
@@ -70,10 +76,10 @@ export default function Home() {
     ))}
   </div>
 
-  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white">
     EMPOWERING THE FUTURE THROUGH DIGITAL EDUCATION
   </h1>
-  <div className="space-y-4 text-base md:text-lg text-gray-700">
+  <div className="space-y-4 text-base md:text-lg text-white">
     <p>
       Laban2tech is a South African EduTech Company, focused
       on equipping young minds with digital skills for the Fourth Industrial
@@ -103,13 +109,20 @@ export default function Home() {
       </main>
 
       {/* Services Section */}
-      <section className="min-h-screen px-4 md:px-6 lg:px-16 py-16 bg-blue-50">
+      {/* <section className="min-h-screen px-4 md:px-6 lg:px-16 py-16 bg-blue-50"> */}
+      <section 
+  className="min-h-screen px-4 md:px-6 lg:px-16 py-16" 
+  style={{ backgroundColor: "#0070B3" }}
+>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 max-w-4xl mx-auto text-blue-900">
+            {/* <h2 className="text-4xl md:text-5xl font-bold mb-6 max-w-4xl mx-auto text-blue-900"> */}
+                  <h2 className="text-4xl md:text-5xl font-bold mb-6 max-w-4xl mx-auto text-white">
+
               Unlock Your Digital Potential with Laban2tech
             </h2>
-            <p className="text-lg md:text-xl text-blue-700 max-w-3xl mx-auto">
+            {/* <p className="text-lg md:text-xl text-blue-700 max-w-3xl mx-auto"> */}
+                  <p className="text-lg md:text-xl text-gray-100 max-w-3xl mx-auto">
               At Laban2tech, we offer innovative programs designed to equip
               underserved youth with essential digital skills. Join us in bridging
               the digital divide and creating opportunities for a brighter future.
