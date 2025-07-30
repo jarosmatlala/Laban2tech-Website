@@ -8,15 +8,16 @@ type Cart = {
   width?: string;
   height?: string;
   onClick?: () => void;
+  textColor?: string;
 };
-export default function Index({ title, paragraph, image, onClick }: Cart) {
+export default function Index({ title, paragraph, image, onClick, textColor = "gray-600" }: Cart) {
   return (
     <div className="rounded-md overflow-hidden relative cursor-pointer hover:shadow-lg transition"
       onClick={onClick}
       >
 
       <div className="w-full relative">
-        <Image alt="" src={image} className={`bg-black rounded-md`} />
+        <Image alt="" src={image} className={`w-full h-64 object-cover rounded-md`} />
         {onClick && (
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="bg-black/50 rounded-full p-4">
@@ -38,9 +39,9 @@ export default function Index({ title, paragraph, image, onClick }: Cart) {
           </div>
         )}
       </div>
-      <div>
-        <h5 className="text-4xl mb-2">{title}</h5>
-        <p className="text-gray-600">{paragraph}</p>
+      <div className="p-4">
+        <h5 className={`text-4xl mb-2 text-${textColor}`}>{title}</h5>
+        <p className={`text-${textColor}`}>{paragraph}</p>
       </div>
     </div>
   );

@@ -128,6 +128,8 @@ export default function Home() {
               the digital divide and creating opportunities for a brighter future.
             </p>
           </div>
+
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             <Info_Card
               // image={hero}
@@ -141,6 +143,7 @@ export default function Home() {
               title="Hands-On Workshops for Real-World Experience"
               paragraph="Participate in interactive sessions that enhance learning."
               onClick={openVideo} 
+
             />
        
             <Info_Card
@@ -152,8 +155,11 @@ export default function Home() {
             />
             
           </div>
+
         </div>
       </section>
+
+      
 {/* Modal */}
       {isVideoOpen && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
