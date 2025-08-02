@@ -12,7 +12,7 @@ import Tsewe from "./assets/Tsewe.jpg";
 import black_and_white from "./assets/black_and_white.jpg";
 // import siyafunda_1 from "./assets/siyafunda_1.jpg";
 import { Info_Card } from "@/_components";
-// import relume from "./assets/Relume.svg";
+// import relume from "./assets/Relume.svg"; 
 import avatar from "./assets/Avatar Image.png";
 import logo from "@/app/assets/Laban- (1).png";
 import Dev2 from "./assets/Dev2.jpg";
@@ -37,64 +37,56 @@ export default function Home() {
 
   return (
     <div>
-      {/* Hero Section */}
-      {/* <main className="flex flex-col lg:flex-row px-4 md:px-6 lg:px-16 gap-8 min-h-screen items-center justify-center py-8 bg-blue-500/20"> */}
-
-       <main 
-    className="flex flex-col lg:flex-row px-4 md:px-6 lg:px-16 gap-8 min-h-screen items-center justify-center py-8" 
-    style={{ backgroundColor: "#00497A" }}
-  >
-      
-        <div className="w-full lg:w-1/2 relative mt-14">
+     
+     {/* Hero Section */}
+      <main className="relative min-h-screen flex items-center justify-center">
+        {/* Full-screen background image */}
+        <div className="absolute inset-0">
           <Image
             alt="hero"
-            // src={pic1}
-          //  src={black_and_white}
-          // src={Dev2}
-          src={development}
-            className="w-full h-[400px] md:h-[500px] lg:h-[600px] object-cover rounded-lg shadow-lg"
+            src={development}
+            className="w-full h-full object-cover"
+            priority
           />
+          {/* Dark overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/40"></div>
         </div>
 
-{/* <right section></right>
-        {/* <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-6"> */}
-        
+        {/* Content overlay */}
+        <div className="relative z-10 text-center px-4 md:px-6 lg:px-16 max-w-6xl mx-auto">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-8 drop-shadow-lg">
+            EMPOWERING THE FUTURE THROUGH DIGITAL EDUCATION
+          </h1>
 
-<div className="w-full lg:w-1/2 relative flex flex-col justify-center space-y-6 overflow-hidden ">
-  {/* Animated Logo Backgrounds */}
-  <div className="absolute inset-0 flex items-center justify-center pointer-events-none mt-16">
-    {[logo, logo, logo].map((img, idx) => (
-      <Image
-        key={idx}
-        src={img}
-        alt={`logo-${idx}`}
-        className={`
-          absolute w-3/4 opacity-10 animate-spin-slow
-          animate-[fadeInOut_6s_${idx * 2}s_infinite]
-        `}
-      />
-    ))}
-  </div>
+          {/* <div className="space-y-6 text-lg md:text-xl lg:text-2xl text-white max-w-4xl mx-auto">
+            <p className="drop-shadow-lg">
+              Laban2tech is a South African EduTech Company, focused
+              on equipping young minds with digital skills for the Fourth Industrial
+              Revolution.
+            </p>
+            <p className="drop-shadow-lg">
+              We are passionate about making technology education accessible,
+              engaging, and impactful — especially for underserved communities.
+            </p>
+            <p className="drop-shadow-lg">
+              Our journey began with a mission to close the digital divide and has
+              evolved into a movement that combines innovation, education, and
+              community development.
+            </p>
+          </div> */}
 
-  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight text-white">
-    EMPOWERING THE FUTURE THROUGH DIGITAL EDUCATION
-  </h1>
-  <div className="space-y-4 text-base md:text-lg text-white">
-    <p>
-      Laban2tech is a South African EduTech Company, focused
-      on equipping young minds with digital skills for the Fourth Industrial
-      Revolution.
-    </p>
-    <p>
-      We are passionate about making technology education accessible,
-      engaging, and impactful — especially for underserved communities.
-    </p>
-    <p>
-      Our journey began with a mission to close the digital divide and has
-      evolved into a movement that combines innovation, education, and
-      community development.
-    </p>
-  </div>
+          {/* Call-to-action buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 pt-8 justify-center">
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg">
+              Learn More →
+            </Button>
+            <Button variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-8 py-3 text-lg">
+              Get Started
+            </Button>
+          </div>
+      
+
+  
   <div className="flex flex-col sm:flex-row gap-4 pt-4">
     {/* <Button size="lg" className="flex-1 sm:flex-none bg-blue-600 hover:bg-blue-700">
       Learn More →
@@ -171,7 +163,7 @@ export default function Home() {
               ✕
             </button>
             <video controls autoPlay className="w-full h-auto">
-              <source src="/assets/teachOtherVideo.mp4" type="video/mp4" />
+            <source src="/assets/MVI_2368.MP4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
