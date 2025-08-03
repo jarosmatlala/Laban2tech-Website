@@ -5,17 +5,15 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Tsewe from "./assets/Tsewe.jpg";
 import Tsewe11 from "./assets/Tsewe11.jpg";
-
 import black_and_white from "./assets/black_and_white.jpg";
 import { Info_Card } from "@/_components";
-import avatar from "./assets/Avatar Image.png";
-import logo from "@/app/assets/Laban- (1).png";
-import Dev2 from "./assets/Dev2.jpg";
 // import development from "./assets/development.jpg";
 import Khosi from "./assets/Khosi.jpg";
 import Kid from "./assets/Kid.jpg";
 import Kid2 from "./assets/Kid2.jpg";
 import photo1 from "./assets/photo1.jpg";
+import WIN from "./assets/WIN.jpg";
+
 
 import {
   Facebook,
@@ -91,15 +89,15 @@ export default function Home() {
             Empowering the future through digital education
           </h5>
 
-          {/* Call-to-action buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 pt-8 justify-center">
+          {/* <div className="flex flex-col sm:flex-row gap-4 pt-8 justify-center">
             <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg">
               Learn More →
             </Button>
             <Button variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-8 py-3 text-lg">
               Get Started
             </Button>
-          </div>
+          </div> */}
+
         </div>
 
         {/* Slideshow indicators (dots) */}
@@ -152,26 +150,26 @@ export default function Home() {
               the digital divide and creating opportunities for a brighter future.
             </p>
           </div>
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+  <Info_Card
+    image={Tsewe}
+    title="Comprehensive Coding and Programming Courses"
+    paragraph="Learn the fundamentals of coding and software development."
+  />
+  <Info_Card
+    image={black_and_white}
+    title="Hands-On Workshops for Real-World Experience"
+    paragraph="Participate in interactive sessions that enhance learning."
+    onClick={openVideo}
+  />
+  <Info_Card
+    image={WIN}
+    title="Scholastic E-Sports Learning"
+    paragraph="Explore the world of graphic design and video editing."
+  />
+</div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <Info_Card
-              image={Tsewe}
-              title="Comprehensive Coding and Programming Courses"
-              paragraph="Learn the fundamentals of coding and software development."
-              
-            />
-            <Info_Card
-              image={black_and_white}
-              title="Hands-On Workshops for Real-World Experience"
-              paragraph="Participate in interactive sessions that enhance learning."
-              onClick={openVideo} 
-            />
-            <Info_Card
-              image={Kid2}
-              title="Creative Digital Design and Multimedia Training"
-              paragraph="Explore the world of graphic design and video editing."
-            />
-          </div>
+
         </div>
       </section>
 
@@ -298,19 +296,14 @@ export default function Home() {
                   <h4 className="text-lg font-semibold mb-4 text-pink-400">Quick Links</h4>
                   <ul className="space-y-2">
                     <li><Link href="/#" className="text-blue-200 hover:text-white">About Us</Link></li>
-                    <li><Link href="/#" className="text-blue-200 hover:text-white">Contact Us</Link></li>
+                    <li><Link href="/#" className="text-blue-200 hover:text-white">Home</Link></li>
                     <li><Link href="/#" className="text-blue-200 hover:text-white">Our Services</Link></li>
-                    <li><Link href="/#" className="text-blue-200 hover:text-white">Blog Posts</Link></li>
-                    <li><Link href="/#" className="text-blue-200 hover:text-white">FAQs</Link></li>
                   </ul>
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold mb-4 text-pink-400">Resources</h4>
                   <ul className="space-y-2">
-                    <li><Link href="/#" className="text-blue-200 hover:text-white">E-books</Link></li>
-                    <li><Link href="/#" className="text-blue-200 hover:text-white">Webinars</Link></li>
-                    <li><Link href="/#" className="text-blue-200 hover:text-white">Case Studies</Link></li>
-                    <li><Link href="/#" className="text-blue-200 hover:text-white">Newsletters</Link></li>
+                    
                     <li><Link href="/#" className="text-blue-200 hover:text-white">Workshops</Link></li>
                   </ul>
                 </div>
