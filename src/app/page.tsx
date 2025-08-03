@@ -12,7 +12,9 @@ import avatar from "./assets/Avatar Image.png";
 import logo from "@/app/assets/Laban- (1).png";
 import Dev2 from "./assets/Dev2.jpg";
 // import development from "./assets/development.jpg";
+import Khosi from "./assets/Khosi.jpg";
 import Kid from "./assets/Kid.jpg";
+import Kid2 from "./assets/Kid2.jpg";
 import photo1 from "./assets/photo1.jpg";
 
 import {
@@ -33,6 +35,7 @@ export default function Home() {
   const heroImages = [
     // development,
     photo1,
+    Kid2,
     Tsewe,
     // Dev2,
     Kid,
@@ -84,9 +87,9 @@ export default function Home() {
 
         {/* Content overlay */}
         <div className="relative z-10 text-center px-4 md:px-6 lg:px-16 max-w-6xl mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-8 drop-shadow-lg">
-            EMPOWERING THE FUTURE THROUGH DIGITAL EDUCATION
-          </h1>
+          <h5 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-8 drop-shadow-lg">
+            Empowering the future through digital education
+          </h5>
 
           {/* Call-to-action buttons */}
           <div className="flex flex-col sm:flex-row gap-4 pt-8 justify-center">
@@ -155,6 +158,7 @@ export default function Home() {
               image={Tsewe}
               title="Comprehensive Coding and Programming Courses"
               paragraph="Learn the fundamentals of coding and software development."
+              
             />
             <Info_Card
               image={black_and_white}
@@ -163,7 +167,7 @@ export default function Home() {
               onClick={openVideo} 
             />
             <Info_Card
-              image={Dev2}
+              image={Kid2}
               title="Creative Digital Design and Multimedia Training"
               paragraph="Explore the world of graphic design and video editing."
             />
@@ -201,18 +205,21 @@ export default function Home() {
           <blockquote className="text-white text-xl md:text-2xl mb-12 italic">
             {"Laban2tech has transformed my understanding of technology. The skills I've gained here have opened new doors for my future."}
           </blockquote>
+
           <div className="flex flex-col md:flex-row items-center justify-center gap-8">
             <div className="flex items-center gap-4 text-white">
-              <Image src={avatar} alt="avatar" className="rounded-full" />
+              {/* <Image src={Khosi} alt="avatar" className="rounded-full" /> */}
+              <Image src={Khosi} alt="avatar" className="rounded-full w-20 h-20 object-cover" />
               <div className="text-left">
-                <p className="font-semibold">Kutullo Moropane</p>
+                <p className="font-semibold">Omphile Nakedi</p>
                 <p className="text-blue-200">Student, Laban2tech</p>
               </div>
             </div>
             <div className="text-white border-l-2 border-blue-400 pl-8">
-              <p className="text-lg">Logo</p>
+              {/* <p className="text-lg">Logo</p> */}
             </div>
           </div>
+          
         </div>
       </section>
 
