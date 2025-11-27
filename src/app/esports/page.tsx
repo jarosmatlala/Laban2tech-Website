@@ -13,12 +13,19 @@ import {
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import Image from "next/image";
+import sport2Image from "@/app/assets/sport2.jpg";
+import etoolsImage from "@/app/assets/etools.avif";
+
+
+
+
 
 export default function EsportsPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-24 px-6 md:px-16">
+      {/* <section className="bg-gradient-to-r from-blue-900  px-6 md:px-16">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             Scholastic E-Sports Learning
@@ -31,111 +38,155 @@ export default function EsportsPage() {
             Enroll Now
           </Button>
         </div>
-      </section>
+      </section> */}
 
-      {/* Holistic eSports Learning Section */}
-      <section className="bg-gray-100 py-20 px-6 md:px-16">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6">
+      
+
+
+<section className="relative py-20 px-6 md:px-20">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={sport2Image}
+            alt="eSports Background"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gray-900/70"></div>
+        </div>
+
+        {/* Content */}
+
+        
+        <div className="relative z-10 max-w-6xl mx-auto text-center">
+          <div className="max-w-6xl mx-auto text-center">
+          {/* <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            Scholastic E-Sports Learning
+          </h1> */}
+          {/* <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-8">
+            Empowering the next generation of digital athletes through 
+            comprehensive eSports education
+          </p> */}
+          {/* <Button size="lg" className="bg-pink-600 hover:bg-pink-700 text-white">
+            Enroll Now
+          </Button> */}
+        </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Holistic eSports Learning
           </h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto mb-12">
+          <p className="text-lg text-gray-100 max-w-3xl mx-auto mb-12 pb-10">
             Our holistic eSports program goes beyond gaming. We nurture 
             students' physical health, mental resilience, digital skills, 
             and career pathways to ensure they thrive both in and out of 
             the game.
           </p>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white shadow-lg rounded-2xl p-6 hover:shadow-xl transition-shadow">
+            <div className="bg-white/5 backdrop-blur-sm shadow-lg rounded-2xl p-6 hover:shadow-xl transition-shadow border border-white/30">
               <h3 className="font-bold text-xl text-blue-800 mb-3">🎮 Gaming Skills</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-100">
                 Learn teamwork, strategy, communication, and competitive 
                 eSports fundamentals.
               </p>
             </div>
-            <div className="bg-white shadow-lg rounded-2xl p-6 hover:shadow-xl transition-shadow">
+            <div className="bg-white/5 backdrop-blur-sm shadow-lg rounded-2xl p-6 hover:shadow-xl transition-shadow border border-white/30">
               <h3 className="font-bold text-xl text-blue-800 mb-3">🧠 Health & Wellness</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-100">
                 Develop healthy habits, manage stress, and balance screen 
                 time with physical activity.
               </p>
             </div>
-            <div className="bg-white shadow-lg rounded-2xl p-6 hover:shadow-xl transition-shadow">
+            <div className="bg-white/5 backdrop-blur-sm shadow-lg rounded-2xl p-6 hover:shadow-xl transition-shadow border border-white/30 ">
               <h3 className="font-bold text-xl text-blue-800 mb-3">🎓 Career Skills</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-100">
                 Explore opportunities in broadcasting, streaming, game 
                 design, and digital entrepreneurship.
               </p>
             </div>
-            <div className="bg-white shadow-lg rounded-2xl p-6 hover:shadow-xl transition-shadow">
+            <div className="bg-white/5 backdrop-blur-sm shadow-lg rounded-2xl p-6 hover:shadow-xl transition-shadow border border-white/30">
               <h3 className="font-bold text-xl text-blue-800 mb-3">🌍 Community & Values</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-100">
                 Promote inclusivity, teamwork, positive gaming culture, and 
                 responsible online behavior.
               </p>
             </div>
           </div>
+
+
         </div>
       </section>
 
       {/* Program Benefits */}
-      <section className="bg-white py-20 px-6 md:px-16">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-blue-900 text-center mb-12">
+      <section className="relative py-20 px-6 md:px-16">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={etoolsImage}
+            alt="eSports Background"
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-blue-900/80"></div>
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold text-white text-center mb-12">
             Why Choose Our eSports Program?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="flex gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+              <div className="flex-shrink-0 w-12 h-12 bg-pink-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
                 1
               </div>
               <div>
-                <h3 className="font-bold text-xl text-blue-800 mb-2">
+                <h3 className="font-bold text-xl text-white mb-2">
                   Professional Coaching
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-100">
                   Learn from experienced eSports professionals and educators 
                   who understand both gaming and youth development.
                 </p>
               </div>
             </div>
             <div className="flex gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+              <div className="flex-shrink-0 w-12 h-12 bg-pink-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
                 2
               </div>
               <div>
-                <h3 className="font-bold text-xl text-blue-800 mb-2">
+                <h3 className="font-bold text-xl text-white mb-2">
                   State-of-the-Art Facilities
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-100">
                   Access high-performance gaming equipment and dedicated 
                   training spaces designed for optimal learning.
                 </p>
               </div>
             </div>
             <div className="flex gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+              <div className="flex-shrink-0 w-12 h-12 bg-pink-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
                 3
               </div>
               <div>
-                <h3 className="font-bold text-xl text-blue-800 mb-2">
+                <h3 className="font-bold text-xl text-white mb-2">
                   Tournament Experience
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-100">
                   Compete in organized tournaments and leagues to develop 
                   competitive skills in a supportive environment.
                 </p>
               </div>
             </div>
             <div className="flex gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+              <div className="flex-shrink-0 w-12 h-12 bg-pink-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
                 4
               </div>
               <div>
-                <h3 className="font-bold text-xl text-blue-800 mb-2">
+                <h3 className="font-bold text-xl text-white mb-2">
                   Holistic Development
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-100">
                   Build life skills including communication, problem-solving, 
                   and digital citizenship alongside gaming expertise.
                 </p>
@@ -144,6 +195,9 @@ export default function EsportsPage() {
           </div>
         </div>
       </section>
+
+
+      
 
       {/* Call to Action */}
       <section className="bg-blue-800 py-16 px-6 md:px-16">
