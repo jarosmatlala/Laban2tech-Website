@@ -1,5 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 import React from "react";
+import { Button } from "@/components/ui/button";
 
 type Cart = {
   title: string;
@@ -9,6 +10,8 @@ type Cart = {
   height?: string;
   onClick?: () => void;
   textColor?: string;
+  buttonText?: string;
+  buttonAction?: () => void;
 };
 
 export default function Index({
@@ -17,7 +20,21 @@ export default function Index({
   image,
   onClick,
   textColor = "gray-600",
+  buttonText = "Learn More",
+  buttonAction,
 }: Cart) {
+
+ // If onClick is provided (like for video), use that, otherwise use buttonAction
+  const handleButtonClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent card click from firing
+    if (buttonAction) {
+      buttonAction();
+    } else if (onClick) {
+      onClick();
+    }
+  };
+
+
   return (
     // ✨ Added "group" so we can target hover states inside this component
     <div
@@ -59,6 +76,16 @@ export default function Index({
       <div className="p-4">
         <h5 className={`text-4xl mb-2 text-${textColor}`}>{title}</h5>
         <p className={`text-${textColor}`}>{paragraph}</p>
+
+ {/* Button */}
+        <Button 
+          onClick={handleButtonClick}
+          className="w-full bg-pink-600 hover:bg-pink-700 text-white"
+        >
+          {buttonText}
+        </Button>
+
+
       </div>
     </div>
   );

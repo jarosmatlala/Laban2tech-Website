@@ -13,6 +13,7 @@ import Kid from "./assets/Kid.jpg";
 import Kid2 from "./assets/Kid2.jpg";
 import photo1 from "./assets/photo1.jpg";
 import WIN from "./assets/WIN.jpg";
+import { useRouter } from 'next/navigation';
 
 
 import {
@@ -27,6 +28,9 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 
 export default function Home() {
+
+  const router = useRouter();
+
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   
   // Array of images for the slideshow
@@ -150,7 +154,9 @@ export default function Home() {
               the digital divide and creating opportunities for a brighter future.
             </p>
           </div>
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+
+
+{/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
   <Info_Card
     image={Tsewe}
     title="Comprehensive Coding and Programming Courses"
@@ -162,11 +168,53 @@ export default function Home() {
     paragraph="Participate in interactive sessions that enhance learning."
     onClick={openVideo}
   />
+
   <Info_Card
     image={WIN}
     title="Scholastic E-Sports Learning"
     paragraph="Explore the world of graphic design and video editing."
   />
+
+
+</div> */}
+
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+  <Info_Card
+    image={Tsewe}
+    title="Comprehensive Coding and Programming Courses"
+    paragraph="Learn the fundamentals of coding and software development."
+    buttonText="Explore Courses"
+    buttonAction={() => {
+      // Add your action here, e.g., navigate to courses page
+      window.location.href = '/courses';
+    }}
+  />
+  <Info_Card
+    image={black_and_white}
+    title="Hands-On Workshops for Real-World Experience"
+    paragraph="Participate in interactive sessions that enhance learning."
+    buttonText="Watch Video"
+    onClick={openVideo}
+  />
+  {/* <Info_Card
+    image={WIN}
+    title="Scholastic E-Sports Learning"
+    paragraph="Explore the world of graphic design and video editing."
+    buttonText="Join E-Sports"
+    buttonAction={() => {
+      // Add your action here
+      console.log('E-Sports clicked');
+    }}
+  /> */}
+
+<Info_Card
+  image={WIN}
+  title="Scholastic E-Sports Learning"
+  paragraph="Explore the world of graphic design and video editing."
+  buttonText="Join E-Sports"
+  buttonAction={() => router.push('/esports')}
+/>
+
 </div>
 
 
@@ -347,11 +395,11 @@ export default function Home() {
           </div>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
             <p>© 2025 Laban2tech. All rights reserved.</p>
-            <ul className="flex gap-6">
+            {/* <ul className="flex gap-6">
               <li><Link href="/#" className="text-blue-200 hover:text-white underline">Privacy Policy</Link></li>
               <li><Link href="/#" className="text-blue-200 hover:text-white underline">Terms of Service</Link></li>
               <li><Link href="/#" className="text-blue-200 hover:text-white underline">Cookie Settings</Link></li>
-            </ul>
+            </ul> */}
           </div>
         </div>
       </footer>
