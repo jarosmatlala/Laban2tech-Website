@@ -12,7 +12,7 @@ import Khosi from "./assets/Khosi.jpg";
 import Kid from "./assets/Kid.jpg";
 import Kid2 from "./assets/Kid2.jpg";
 import photo1 from "./assets/photo1.jpg";
-import elearn from "./assets/elearn.jpg";
+import lear from "./assets/lear.jpg";
 import { useRouter } from 'next/navigation';
 
 
@@ -226,7 +226,7 @@ export default function Home() {
   /> */}
 
 <Info_Card
-  image={elearn}
+  image={lear}
   title="Scholastic E-Sports Learning"
   paragraph="Explore the world of graphic design and video editing."
   buttonText="Join E-Sports"
