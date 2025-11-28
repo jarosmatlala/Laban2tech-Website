@@ -12,7 +12,7 @@ import Khosi from "./assets/Khosi.jpg";
 import Kid from "./assets/Kid.jpg";
 import Kid2 from "./assets/Kid2.jpg";
 import photo1 from "./assets/photo1.jpg";
-import WIN from "./assets/WIN.jpg";
+import elearn from "./assets/elearn.jpg";
 import { useRouter } from 'next/navigation';
 
 
@@ -178,7 +178,7 @@ export default function Home() {
 </div> */}
 
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-  <Info_Card
+  {/* <Info_Card
     image={Tsewe}
     title="Comprehensive Coding and Programming Courses"
     paragraph="Learn the fundamentals of coding and software development."
@@ -187,7 +187,24 @@ export default function Home() {
       // Add your action here, e.g., navigate to courses page
       window.location.href = '/courses';
     }}
-  />
+  /> */}
+
+<Info_Card
+  image={Tsewe}
+  title="Transform Ideas Into Reality"
+  paragraph="Learn the fundamentals of modern software development"
+  // • Web Development (Frontend & Backend)
+  // • Mobile App Development (iOS & Android)
+  // • UI/UX Design
+  // • Software Engineering Principles"
+  buttonText="Explore All Courses"
+  buttonAction={() => {
+    window.location.href = '/courses';
+  }}
+/>
+
+
+
   <Info_Card
     image={black_and_white}
     title="Hands-On Workshops for Real-World Experience"
@@ -195,6 +212,8 @@ export default function Home() {
     buttonText="Watch Video"
     onClick={openVideo}
   />
+
+  
   {/* <Info_Card
     image={WIN}
     title="Scholastic E-Sports Learning"
@@ -207,7 +226,7 @@ export default function Home() {
   /> */}
 
 <Info_Card
-  image={WIN}
+  image={elearn}
   title="Scholastic E-Sports Learning"
   paragraph="Explore the world of graphic design and video editing."
   buttonText="Join E-Sports"
