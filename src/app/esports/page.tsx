@@ -7,7 +7,6 @@ import {
   Facebook,
   Instagram,
   Linkedin,
-  StarIcon,
   X,
   YoutubeIcon,
 } from "lucide-react";
@@ -77,7 +76,7 @@ export default function EsportsPage() {
           </h2>
           <p className="text-lg text-gray-100 max-w-3xl mx-auto mb-12 pb-10">
             Our holistic eSports program goes beyond gaming. We nurture 
-            students' physical health, mental resilience, digital skills, 
+            students physical health, mental resilience, digital skills, 
             and career pathways to ensure they thrive both in and out of 
             the game.
           </p>

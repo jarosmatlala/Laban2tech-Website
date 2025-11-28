@@ -20,7 +20,6 @@ import {
   Facebook,
   Instagram,
   Linkedin,
-  StarIcon,
   X,
   YoutubeIcon,
 } from "lucide-react";
@@ -243,11 +242,11 @@ export default function Home() {
       {/* Testimonial Section */}
       <section className="bg-blue-900 py-16">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-16 text-center">
-          <div className="flex justify-center gap-2 mb-8">
+          {/* <div className="flex justify-center gap-2 mb-8">
             <StarIcon color="#fbbf24" size={32} />
             <StarIcon color="#fbbf24" size={32} />
             <StarIcon color="#fbbf24" size={32} />
-          </div>
+          </div> */}
           <blockquote className="text-white text-xl md:text-2xl mb-12 italic">
             {"Laban2tech has transformed my understanding of technology. The skills I've gained here have opened new doors for my future."}
           </blockquote>
