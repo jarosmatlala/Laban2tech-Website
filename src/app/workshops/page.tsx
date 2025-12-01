@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import Image from "next/image"
-import dek from "../assets/dek.jpg";
 import apple from "../assets/apple.png";
 import uii from "../assets/uii.png";
 import crop2 from "../assets/crop2.png";

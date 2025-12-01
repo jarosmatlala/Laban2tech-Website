@@ -7,14 +7,13 @@ import Tsewe from "./assets/Tsewe.jpg";
 import Tsewe11 from "./assets/Tsewe11.jpg";
 import black_and_white from "./assets/black_and_white.jpg";
 import { Info_Card } from "@/_components";
-// import development from "./assets/development.jpg";
 import Khosi from "./assets/Khosi.jpg";
 import Kid from "./assets/Kid.jpg";
 import Kid2 from "./assets/Kid2.jpg";
 import photo1 from "./assets/photo1.jpg";
 import lear from "./assets/lear.jpg";
 import { useRouter } from 'next/navigation';
-
+import emailjs from '@emailjs/browser';
 
 import {
   Facebook,
@@ -27,22 +26,28 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 
 export default function Home() {
-
   const router = useRouter();
-
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+  
+  // Form state - THIS WAS MISSING!
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
   
   // Array of images for the slideshow
   const heroImages = [
-    // development,
     photo1,
     Kid2,
     Tsewe,
-    // Dev2,
     Kid,
     Tsewe11,
-    
-    
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -53,13 +58,64 @@ export default function Home() {
       setCurrentImageIndex((prevIndex) => 
         prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
       );
-    }, 4000); // Change image every 4 seconds
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [heroImages.length]);
 
-  const openVideo = () => setIsVideoOpen(true);
-  const closeVideo = () => setIsVideoOpen(false);
+  // Handle form input changes
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      // EmailJS credentials
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_s5xkiup';
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_asmpgps';
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'JT-Ztn8wYQZPXU70K';
+
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_name: 'Laban2tech',
+      };
+
+      const response = await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
+      );
+
+      if (response.status === 200) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Thank you! Your message has been sent successfully.'
+        });
+        // Reset form
+        setFormData({ name: '', email: '', message: '' });
+      }
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setSubmitStatus({
+        type: 'error',
+        message: 'Sorry, something went wrong. Please try again later.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div>
@@ -82,7 +138,6 @@ export default function Home() {
               />
             </div>
           ))}
-          {/* Dark overlay for better text readability */}
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
 
@@ -91,19 +146,9 @@ export default function Home() {
           <h5 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-8 drop-shadow-lg">
             Empowering the future through digital education
           </h5>
-
-          {/* <div className="flex flex-col sm:flex-row gap-4 pt-8 justify-center">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg">
-              Learn More →
-            </Button>
-            <Button variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-8 py-3 text-lg">
-              Get Started
-            </Button>
-          </div> */}
-
         </div>
 
-        {/* Slideshow indicators (dots) */}
+        {/* Slideshow indicators */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
           {heroImages.map((_, index) => (
             <button
@@ -118,7 +163,7 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Optional: Navigation arrows */}
+        {/* Navigation arrows */}
         <button
           onClick={() => setCurrentImageIndex(
             currentImageIndex === 0 ? heroImages.length - 1 : currentImageIndex - 1
@@ -154,136 +199,53 @@ export default function Home() {
             </p>
           </div>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-stretch">
+            <Info_Card
+              image={Tsewe}
+              title="Transform Ideas Into Reality"
+              paragraph="Learn the fundamentals of modern software development"
+              buttonText="Explore "
+              buttonAction={() => {
+                window.location.href = '/courses';
+              }}
+            />
 
-{/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-  <Info_Card
-    image={Tsewe}
-    title="Comprehensive Coding and Programming Courses"
-    paragraph="Learn the fundamentals of coding and software development."
-  />
-  <Info_Card
-    image={black_and_white}
-    title="Hands-On Workshops for Real-World Experience"
-    paragraph="Participate in interactive sessions that enhance learning."
-    onClick={openVideo}
-  />
+            <Info_Card
+              image={black_and_white}
+              title="Hands-On Workshops for Real-World Experience"
+              paragraph="Participate in interactive sessions that enhance learning."
+              buttonText="Join Our WorkShops"
+              buttonAction={() => router.push('/workshops')}
+            />
 
-  <Info_Card
-    image={WIN}
-    title="Scholastic E-Sports Learning"
-    paragraph="Explore the world of graphic design and video editing."
-  />
-
-
-</div> */}
-
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-  {/* <Info_Card
-    image={Tsewe}
-    title="Comprehensive Coding and Programming Courses"
-    paragraph="Learn the fundamentals of coding and software development."
-    buttonText="Explore Courses"
-    buttonAction={() => {
-      // Add your action here, e.g., navigate to courses page
-      window.location.href = '/courses';
-    }}
-  /> */}
-
-<Info_Card
-  image={Tsewe}
-  title="Transform Ideas Into Reality"
-  paragraph="Learn the fundamentals of modern software development"
-  // • Web Development (Frontend & Backend)
-  // • Mobile App Development (iOS & Android)
-  // • UI/UX Design
-  // • Software Engineering Principles"
-  buttonText="Explore "
-  buttonAction={() => {
-    window.location.href = '/courses';
-  }}
-/>
-
-
-
-  <Info_Card
-    image={black_and_white}
-    title="Hands-On Workshops for Real-World Experience"
-    paragraph="Participate in interactive sessions that enhance learning."
-    buttonText="Join Our WorkShops"
-  buttonAction={() => router.push('/workshops')}
-  />
-
-  
-  {/* <Info_Card
-    image={WIN}
-    title="Scholastic E-Sports Learning"
-    paragraph="Explore the world of graphic design and video editing."
-    buttonText="Join E-Sports"
-    buttonAction={() => {
-      // Add your action here
-      console.log('E-Sports clicked');
-    }}
-  /> */}
-
-<Info_Card
-  image={lear}
-  title="Scholastic E-Sports Learning"
-  paragraph="Explore the world of graphic design and video editing."
-  buttonText="Join E-Sports"
-  buttonAction={() => router.push('/esports')}
-/>
-
-</div>
-
-
+            <Info_Card
+              image={lear}
+              title="Scholastic E-Sports Learning"
+              paragraph="Explore the world of graphic design and video editing."
+              buttonText="Join E-Sports"
+              buttonAction={() => router.push('/esports')}
+            />
+          </div>
         </div>
       </section>
 
-      {/* Modal */}
-      {isVideoOpen && (
-        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg overflow-hidden max-w-3xl w-full relative">
-            <button
-              onClick={closeVideo}
-              className="absolute top-2 right-2 text-black text-xl font-bold z-10"
-            >
-              ✕
-            </button>
-            <video controls autoPlay className="w-full h-auto">
-              <source src="/assets/MVI_2368.MP4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-      )}
-
-      {/* Rest of your sections remain the same... */}
       {/* Testimonial Section */}
       <section className="bg-blue-900 py-16">
         <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-16 text-center">
-          {/* <div className="flex justify-center gap-2 mb-8">
-            <StarIcon color="#fbbf24" size={32} />
-            <StarIcon color="#fbbf24" size={32} />
-            <StarIcon color="#fbbf24" size={32} />
-          </div> */}
           <blockquote className="text-white text-xl md:text-2xl mb-12 italic">
             {"Laban2tech has transformed my understanding of technology. The skills I've gained here have opened new doors for my future."}
           </blockquote>
 
           <div className="flex flex-col md:flex-row items-center justify-center gap-8">
             <div className="flex items-center gap-4 text-white">
-              {/* <Image src={Khosi} alt="avatar" className="rounded-full" /> */}
               <Image src={Khosi} alt="avatar" className="rounded-full w-20 h-20 object-cover" />
               <div className="text-left">
                 <p className="font-semibold">Omphile Nakedi</p>
                 <p className="text-blue-200">Student, Laban2tech</p>
               </div>
             </div>
-            <div className="text-white border-l-2 border-blue-400 pl-8">
-              {/* <p className="text-lg">Logo</p> */}
-            </div>
+            <div className="text-white border-l-2 border-blue-400 pl-8"></div>
           </div>
-          
         </div>
       </section>
 
@@ -300,13 +262,17 @@ export default function Home() {
               </p>
             </div>
             <div className="w-full lg:w-1/2">
-              <form className="space-y-6 max-w-md mx-auto">
+              <form onSubmit={handleSubmit} className="space-y-6 max-w-md mx-auto">
                 <div>
                   <label className="block text-white mb-2">Name</label>
                   <input
                     className="w-full px-4 py-3 rounded-md text-blue-900 outline-none focus:ring-2 focus:ring-pink-500"
                     type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
                     placeholder="Your name"
+                    required
                   />
                 </div>
                 <div>
@@ -314,18 +280,42 @@ export default function Home() {
                   <input
                     className="w-full px-4 py-3 rounded-md text-blue-900 outline-none focus:ring-2 focus:ring-pink-500"
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     placeholder="your.email@example.com"
+                    required
                   />
                 </div>
                 <div>
                   <label className="block text-white mb-2">Message</label>
                   <textarea
                     className="w-full px-4 py-3 rounded-md text-blue-900 outline-none min-h-[120px] resize-vertical focus:ring-2 focus:ring-pink-500"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
                     placeholder="Your message here..."
+                    required
                   ></textarea>
                 </div>
-                <button className="w-full py-3 rounded-md bg-pink-600 text-white font-bold hover:bg-pink-700 transition-colors">
-                  Submit
+                
+                {/* Status Messages */}
+                {submitStatus.type && (
+                  <div className={`p-4 rounded-md ${
+                    submitStatus.type === 'success' 
+                      ? 'bg-green-100 text-green-800' 
+                      : 'bg-red-100 text-red-800'
+                  }`}>
+                    {submitStatus.message}
+                  </div>
+                )}
+
+                <button 
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full py-3 rounded-md bg-pink-600 text-white font-bold hover:bg-pink-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? 'Sending...' : 'Submit'}
                 </button>
               </form>
             </div>
@@ -369,7 +359,6 @@ export default function Home() {
                 <div>
                   <h4 className="text-lg font-semibold mb-4 text-pink-400">Resources</h4>
                   <ul className="space-y-2">
-                    
                     <li><Link href="/#" className="text-blue-200 hover:text-white">Workshops</Link></li>
                   </ul>
                 </div>
@@ -413,11 +402,6 @@ export default function Home() {
           </div>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
             <p>© 2025 Laban2tech. All rights reserved.</p>
-            {/* <ul className="flex gap-6">
-              <li><Link href="/#" className="text-blue-200 hover:text-white underline">Privacy Policy</Link></li>
-              <li><Link href="/#" className="text-blue-200 hover:text-white underline">Terms of Service</Link></li>
-              <li><Link href="/#" className="text-blue-200 hover:text-white underline">Cookie Settings</Link></li>
-            </ul> */}
           </div>
         </div>
       </footer>
