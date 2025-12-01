@@ -209,8 +209,8 @@ export default function Home() {
     image={black_and_white}
     title="Hands-On Workshops for Real-World Experience"
     paragraph="Participate in interactive sessions that enhance learning."
-    buttonText="Watch Video"
-    onClick={openVideo}
+    buttonText="Join Our WorkShops"
+  buttonAction={() => router.push('/workshops')}
   />
 
   
