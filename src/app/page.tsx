@@ -197,7 +197,7 @@ export default function Home() {
   // • Mobile App Development (iOS & Android)
   // • UI/UX Design
   // • Software Engineering Principles"
-  buttonText="Explore All Courses"
+  buttonText="Explore "
   buttonAction={() => {
     window.location.href = '/courses';
   }}

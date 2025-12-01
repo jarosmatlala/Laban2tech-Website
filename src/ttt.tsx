@@ -12,13 +12,7 @@ import {
   YoutubeIcon,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import Image from "next/image"
-import dek from "../assets/dek.jpg";
-import map from "../assets/map.png";
-import ui from "../assets/ui.jpg";
-
-
-
+import lear from "./assets/lear.jpg";
 
 
 
@@ -47,15 +41,6 @@ export default function CoursesPage() {
               Learn HTML, CSS, JavaScript, React, Next.js, and backend fundamentals.
             </p>
 
-<Image
-  src={dek}
-  alt="Web Dev"
-  className="rounded-lg mb-4"
-  width={400}
-  height={250}
-/>
-          
-
             <Link href="/courses/web-development">
               <Button className="bg-blue-500 hover:bg-blue-600 text-white">
                 View Details
@@ -72,13 +57,6 @@ export default function CoursesPage() {
             <p className="text-gray-200 mb-4">
               Build Android & iOS apps using React Native and modern tools.
             </p>
-            <Image
-  src={map}
-  alt="Web Dev"
-  className="rounded-lg mb-4"
-  width={400}
-  height={250}
-/>
             <Link href="/courses/mobile-development">
               <Button className="bg-blue-500 hover:bg-blue-600 text-white">
                 View Details
@@ -92,13 +70,6 @@ export default function CoursesPage() {
             <p className="text-gray-200 mb-4">
               Master design systems, Figma, wireframing, and product workflows.
             </p>
-            <Image
-  src={ui}
-  alt="Web Dev"
-  className="rounded-lg mb-4"
-  width={400}
-  height={250}
-/>
             <Link href="/courses/ui-ux">
               <Button className="bg-blue-500 hover:bg-blue-600 text-white">
                 View Details
