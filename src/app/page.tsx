@@ -13,7 +13,8 @@ import Kid2 from "./assets/Kid2.jpg";
 import photo1 from "./assets/photo1.jpg";
 import lear from "./assets/lear.jpg";
 import { useRouter } from 'next/navigation';
-import emailjs from '@emailjs/browser';
+import Laban2techContactForm from '@/_components/Laban2techContactForm';
+
 
 import {
   Facebook,
@@ -29,18 +30,7 @@ export default function Home() {
   const router = useRouter();
   const [isVideoOpen, setIsVideoOpen] = useState(false);
   
-  // Form state - THIS WAS MISSING!
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<{
-    type: 'success' | 'error' | null;
-    message: string;
-  }>({ type: null, message: '' });
-  
+   
   // Array of images for the slideshow
   const heroImages = [
     photo1,
@@ -63,59 +53,6 @@ export default function Home() {
     return () => clearInterval(interval);
   }, [heroImages.length]);
 
-  // Handle form input changes
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  // Handle form submission
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus({ type: null, message: '' });
-
-    try {
-      // EmailJS credentials
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_s5xkiup';
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_asmpgps';
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'JT-Ztn8wYQZPXU70K';
-
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        message: formData.message,
-        to_name: 'Laban2tech',
-      };
-
-      const response = await emailjs.send(
-        serviceId,
-        templateId,
-        templateParams,
-        publicKey
-      );
-
-      if (response.status === 200) {
-        setSubmitStatus({
-          type: 'success',
-          message: 'Thank you! Your message has been sent successfully.'
-        });
-        // Reset form
-        setFormData({ name: '', email: '', message: '' });
-      }
-    } catch (error) {
-      console.error('EmailJS Error:', error);
-      setSubmitStatus({
-        type: 'error',
-        message: 'Sorry, something went wrong. Please try again later.'
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   return (
     <div>
@@ -249,79 +186,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="bg-blue-800 py-16">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-16">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <div className="w-full lg:w-1/2 text-white">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Contact Us</h2>
-              <p className="text-blue-100 text-lg max-w-md">
-                Ready to start your digital journey? Get in touch with us today and 
-                discover how Laban2tech can help you unlock your potential in the 
-                digital world.
-              </p>
-            </div>
-            <div className="w-full lg:w-1/2">
-              <form onSubmit={handleSubmit} className="space-y-6 max-w-md mx-auto">
-                <div>
-                  <label className="block text-white mb-2">Name</label>
-                  <input
-                    className="w-full px-4 py-3 rounded-md text-blue-900 outline-none focus:ring-2 focus:ring-pink-500"
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    placeholder="Your name"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-white mb-2">Email</label>
-                  <input
-                    className="w-full px-4 py-3 rounded-md text-blue-900 outline-none focus:ring-2 focus:ring-pink-500"
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="your.email@example.com"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-white mb-2">Message</label>
-                  <textarea
-                    className="w-full px-4 py-3 rounded-md text-blue-900 outline-none min-h-[120px] resize-vertical focus:ring-2 focus:ring-pink-500"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    placeholder="Your message here..."
-                    required
-                  ></textarea>
-                </div>
-                
-                {/* Status Messages */}
-                {submitStatus.type && (
-                  <div className={`p-4 rounded-md ${
-                    submitStatus.type === 'success' 
-                      ? 'bg-green-100 text-green-800' 
-                      : 'bg-red-100 text-red-800'
-                  }`}>
-                    {submitStatus.message}
-                  </div>
-                )}
+       <Laban2techContactForm />
 
-                <button 
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full py-3 rounded-md bg-pink-600 text-white font-bold hover:bg-pink-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? 'Sending...' : 'Submit'}
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Footer */}
       <footer className="bg-blue-900 text-white py-16">
