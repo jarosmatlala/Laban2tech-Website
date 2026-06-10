@@ -152,7 +152,7 @@ As South Africa proudly commemorates the 50th Anniversary of June 16, we at Laba
                   <h4 className="text-lg font-semibold mb-4 text-pink-400">Connect With Us</h4>
                   <ul className="space-y-2">
                     <li>
-                      <Link href="/#" className="flex items-center gap-2 text-blue-200 hover:text-white">
+                      <Link href="https://web.facebook.com/profile.php?id=61580600991449" className="flex items-center gap-2 text-blue-200 hover:text-white">
                         <Facebook size={20} />
                         Facebook
                       </Link>
@@ -170,7 +170,7 @@ As South Africa proudly commemorates the 50th Anniversary of June 16, we at Laba
                       </Link>
                     </li>
                     <li>
-                      <Link href="/#" className="flex items-center gap-2 text-blue-200 hover:text-white">
+                      <Link href="https://www.linkedin.com/company/112031633/admin/inbox/" className="flex items-center gap-2 text-blue-200 hover:text-white">
                         <Linkedin size={20} />
                         LinkedIn
                       </Link>
