@@ -4,7 +4,8 @@ import { useState, forwardRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Mail, MapPin, Send, MessageSquare, AlertCircle, CheckCircle2 } from "lucide-react";
+// import { Mail, MapPin, Send, MessageSquare, AlertCircle, CheckCircle2 } from "lucide-react";
+import { Send, MessageSquare, AlertCircle, CheckCircle2 } from "lucide-react";
 
 // Schema definition
 const formSchema = z.object({
