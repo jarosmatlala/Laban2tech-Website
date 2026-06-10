@@ -11,10 +11,10 @@ import {
   X,
   YoutubeIcon,
 } from "lucide-react";
-import { Input } from "@/components/ui/input";
+// import { Input } from "@/components/ui/input";
 import Image from "next/image"
-import apple from "../assets/apple.png";
-import uii from "../assets/uii.png";
+// import apple from "../assets/apple.png";
+// import uii from "../assets/uii.png";
 import youthh from "../assets/youthh.jpg";
 
 
