@@ -1,15 +1,16 @@
 "use client";
 
-import { useState, forwardRef } from "react";
+import { useState, forwardRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { Mail, MapPin, Send, MessageSquare, AlertCircle, CheckCircle2 } from "lucide-react";
 
 // Schema definition
 const formSchema = z.object({
   firstName: z.string().min(2, "First name must be at least 2 characters"),
   lastName: z.string().min(2, "Last name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email"),
+  email: z.string().email("Please enter a valid email address"),
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
 
@@ -20,7 +21,7 @@ const Input = forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputEl
   ({ className = "", ...props }, ref) => (
     <input
       ref={ref}
-      className={`w-full px-4 py-3 rounded-md text-blue-900 outline-none focus:ring-2 focus:ring-pink-500 ${className}`}
+      className={`w-full px-4 py-3 rounded-xl bg-slate-950/60 border border-slate-800 text-white placeholder-slate-500 outline-none transition-all duration-250 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 focus:bg-slate-950 ${className}`}
       {...props}
     />
   )
@@ -32,7 +33,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, React.TextareaHTMLAttributes<HT
   ({ className = "", ...props }, ref) => (
     <textarea
       ref={ref}
-      className={`w-full px-4 py-3 rounded-md text-blue-900 outline-none min-h-[120px] resize-vertical focus:ring-2 focus:ring-pink-500 ${className}`}
+      className={`w-full px-4 py-3 rounded-xl bg-slate-950/60 border border-slate-800 text-white placeholder-slate-500 outline-none min-h-[140px] resize-vertical transition-all duration-250 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 focus:bg-slate-950 ${className}`}
       {...props}
     />
   )
@@ -54,13 +55,17 @@ const Button = ({
     disabled={disabled}
     type={type}
     onClick={onClick}
-    className="w-full py-3 rounded-md bg-pink-600 text-white font-bold hover:bg-pink-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+    className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-bold hover:from-indigo-500 hover:to-blue-500 shadow-lg shadow-indigo-500/15 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] flex items-center justify-center gap-2"
   >
     {children}
   </button>
 );
 
-export default function Laban2techContactForm() {
+interface ContactFormProps {
+  selectedPlan?: string;
+}
+
+export default function Laban2techContactForm({ selectedPlan }: ContactFormProps) {
   const [submitStatus, setSubmitStatus] = useState<{
     type: 'success' | 'error' | null;
     message: string;
@@ -76,6 +81,21 @@ export default function Laban2techContactForm() {
     },
   });
 
+  // Pre-fill form when a plan is selected
+  useEffect(() => {
+    if (selectedPlan) {
+      form.setValue(
+        "message",
+        `Hi! I would like to request a quote or get started with the "${selectedPlan}" package. Please reach out to me with more details.`
+      );
+      // Optional: scroll down to form smoothly when plan clicked
+      const element = document.getElementById("contact-section");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [selectedPlan, form]);
+
   const onSubmit = async (values: FormData) => {
     setSubmitStatus({ type: null, message: '' });
     
@@ -86,7 +106,11 @@ export default function Laban2techContactForm() {
         body: JSON.stringify(values),
       });
 
-      if (!response.ok) throw new Error('Failed to send message');
+      const resData = await response.json();
+
+      if (!response.ok) {
+        throw new Error(resData.error || 'Failed to send message');
+      }
 
       setSubmitStatus({
         type: 'success',
@@ -94,10 +118,11 @@ export default function Laban2techContactForm() {
       });
       
       form.reset();
-    } catch (error) {
+    } catch (error: unknown) {
+      const errMsg = error instanceof Error ? error.message : String(error);
       setSubmitStatus({
         type: 'error',
-        message: 'Sorry, something went wrong. Please try again later or email us directly at matlalaj67@gmail.com'
+        message: errMsg || 'Sorry, something went wrong. Please check your internet connection or email us directly at matlalaj67@gmail.com'
       });
     }
   };
@@ -108,115 +133,169 @@ export default function Laban2techContactForm() {
   };
 
   return (
-    <section className="bg-blue-800 py-16">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-16">
-        <div className="flex flex-col lg:flex-row items-center gap-12">
-          {/* Left side - Text content */}
-          <div className="w-full lg:w-1/2 text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Contact Us</h2>
-            <p className="text-blue-100 text-lg max-w-md mb-6">
-              Ready to start your digital journey? Get in touch with us today and 
-              discover how Laban2tech can help you unlock your potential in the 
-              digital world.
-            </p>
-            <div className="space-y-3 text-blue-100">
-              <p>📧 Email: matlalaj67@gmail.com</p>
-              <p>📍 Location: Middelburg, Mpumalanga</p>
+    <section id="contact-section" className="relative bg-slate-950 py-24 border-t border-slate-900">
+      {/* Decorative gradient blur in background */}
+      <div className="absolute top-1/4 right-0 w-80 h-80 bg-indigo-600/5 rounded-full filter blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-violet-600/5 rounded-full filter blur-3xl pointer-events-none"></div>
+
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-16 relative z-10">
+        <div className="flex flex-col lg:flex-row items-stretch gap-16">
+          
+          {/* Left side - Text & contact details */}
+          <div className="w-full lg:w-1/2 flex flex-col justify-between">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wider mb-6">
+                <MessageSquare size={14} /> Get in Touch
+              </div>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight leading-tight">
+                Let&apos;s Build Something <br />
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-blue-500 to-violet-400">
+                  Great Together
+                </span>
+              </h2>
+              <p className="text-slate-400 text-lg max-w-lg mb-8 leading-relaxed">
+                Ready to take your business online or build a custom solution?
+                Reach out today for a consultation or quote. Our team at Laban2tech is ready to turn your ideas into high-performance digital products.
+              </p>
+            </div>
+
+            <div className="space-y-6 border-t border-slate-900 pt-8 mt-4">
+              <div className="flex items-center gap-4 group">
+                <div className="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-indigo-400 group-hover:border-indigo-500/50 transition-colors">
+                  <Mail size={20} />
+                </div>
+                <div>
+                  <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Email Us</p>
+                  <a href="mailto:matlalaj67@gmail.com" className="text-white hover:text-indigo-400 text-base transition-colors">
+                    matlalaj67@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4 group">
+                <div className="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-indigo-400 group-hover:border-indigo-500/50 transition-colors">
+                  <MapPin size={20} />
+                </div>
+                <div>
+                  <p className="text-xs text-slate-500 font-semibold uppercase tracking-wider">Location</p>
+                  <p className="text-white text-base">
+                    Middelburg, Mpumalanga, South Africa
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Right side - Form */}
+          {/* Right side - Glassmorphic form card */}
           <div className="w-full lg:w-1/2">
-            <div className="space-y-6 max-w-md mx-auto">
-              {/* First Name & Last Name Row */}
-              <div className="grid grid-cols-2 gap-4">
+            <div className="bg-slate-900/40 backdrop-blur-md border border-slate-800 p-8 rounded-2xl shadow-xl max-w-lg mx-auto lg:mr-0">
+              <h3 className="text-xl font-bold text-white mb-6">Send a Message</h3>
+              
+              <div className="space-y-6">
+                {/* First Name & Last Name Row */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-slate-400 mb-2 text-xs font-semibold uppercase tracking-wider">
+                      First Name <span className="text-indigo-500">*</span>
+                    </label>
+                    <Input
+                      type="text"
+                      placeholder="John"
+                      {...form.register("firstName")}
+                    />
+                    {form.formState.errors.firstName && (
+                      <p className="text-red-400 text-xs mt-1.5 flex items-center gap-1">
+                        <AlertCircle size={12} /> {form.formState.errors.firstName.message}
+                      </p>
+                    )}
+                  </div>
+                  
+                  <div>
+                    <label className="block text-slate-400 mb-2 text-xs font-semibold uppercase tracking-wider">
+                      Last Name <span className="text-indigo-500">*</span>
+                    </label>
+                    <Input
+                      type="text"
+                      placeholder="Doe"
+                      {...form.register("lastName")}
+                    />
+                    {form.formState.errors.lastName && (
+                      <p className="text-red-400 text-xs mt-1.5 flex items-center gap-1">
+                        <AlertCircle size={12} /> {form.formState.errors.lastName.message}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Email */}
                 <div>
-                  <label className="block text-white mb-2 text-sm font-medium">
-                    First Name <span className="text-pink-400">*</span>
+                  <label className="block text-slate-400 mb-2 text-xs font-semibold uppercase tracking-wider">
+                    Email Address <span className="text-indigo-500">*</span>
                   </label>
                   <Input
-                    type="text"
-                    placeholder="John"
-                    {...form.register("firstName")}
+                    type="email"
+                    placeholder="your.email@example.com"
+                    {...form.register("email")}
                   />
-                  {form.formState.errors.firstName && (
-                    <p className="text-pink-300 text-sm mt-1">
-                      {form.formState.errors.firstName.message}
+                  {form.formState.errors.email && (
+                    <p className="text-red-400 text-xs mt-1.5 flex items-center gap-1">
+                      <AlertCircle size={12} /> {form.formState.errors.email.message}
                     </p>
                   )}
                 </div>
-                
+
+                {/* Message */}
                 <div>
-                  <label className="block text-white mb-2 text-sm font-medium">
-                    Last Name <span className="text-pink-400">*</span>
+                  <label className="block text-slate-400 mb-2 text-xs font-semibold uppercase tracking-wider">
+                    Your Message <span className="text-indigo-500">*</span>
                   </label>
-                  <Input
-                    type="text"
-                    placeholder="Doe"
-                    {...form.register("lastName")}
+                  <Textarea
+                    placeholder="Tell us about your project or what features you'd like to implement..."
+                    {...form.register("message")}
                   />
-                  {form.formState.errors.lastName && (
-                    <p className="text-pink-300 text-sm mt-1">
-                      {form.formState.errors.lastName.message}
+                  {form.formState.errors.message && (
+                    <p className="text-red-400 text-xs mt-1.5 flex items-center gap-1">
+                      <AlertCircle size={12} /> {form.formState.errors.message.message}
                     </p>
                   )}
                 </div>
-              </div>
 
-              {/* Email */}
-              <div>
-                <label className="block text-white mb-2 text-sm font-medium">
-                  Email <span className="text-pink-400">*</span>
-                </label>
-                <Input
-                  type="email"
-                  placeholder="your.email@example.com"
-                  {...form.register("email")}
-                />
-                {form.formState.errors.email && (
-                  <p className="text-pink-300 text-sm mt-1">
-                    {form.formState.errors.email.message}
-                  </p>
+                {/* Status Messages */}
+                {submitStatus.type && (
+                  <div className={`p-4 rounded-xl border flex items-start gap-3 text-sm ${
+                    submitStatus.type === 'success' 
+                      ? 'bg-green-500/10 border-green-500/25 text-green-400' 
+                      : 'bg-red-500/10 border-red-500/25 text-red-400'
+                  }`}>
+                    {submitStatus.type === 'success' ? (
+                      <CheckCircle2 size={16} className="mt-0.5 flex-shrink-0" />
+                    ) : (
+                      <AlertCircle size={16} className="mt-0.5 flex-shrink-0" />
+                    )}
+                    <div>
+                      {submitStatus.message}
+                    </div>
+                  </div>
                 )}
+
+                {/* Submit Button */}
+                <Button 
+                  type="button"
+                  onClick={handleSubmit}
+                  disabled={form.formState.isSubmitting}
+                >
+                  {form.formState.isSubmitting ? (
+                    'Sending Message...'
+                  ) : (
+                    <>
+                      <Send size={16} /> Send Inquiry
+                    </>
+                  )}
+                </Button>
               </div>
-
-              {/* Message */}
-              <div>
-                <label className="block text-white mb-2 text-sm font-medium">
-                  Message <span className="text-pink-400">*</span>
-                </label>
-                <Textarea
-                  placeholder="Tell us about your interest in our programs..."
-                  {...form.register("message")}
-                />
-                {form.formState.errors.message && (
-                  <p className="text-pink-300 text-sm mt-1">
-                    {form.formState.errors.message.message}
-                  </p>
-                )}
-              </div>
-
-              {/* Status Messages */}
-              {submitStatus.type && (
-                <div className={`p-4 rounded-md ${
-                  submitStatus.type === 'success' 
-                    ? 'bg-green-100 text-green-800' 
-                    : 'bg-red-100 text-red-800'
-                }`}>
-                  {submitStatus.message}
-                </div>
-              )}
-
-              {/* Submit Button */}
-              <Button 
-                type="button"
-                onClick={handleSubmit}
-                disabled={form.formState.isSubmitting}
-              >
-                {form.formState.isSubmitting ? 'Sending...' : 'Send Message'}
-              </Button>
             </div>
           </div>
+
         </div>
       </div>
     </section>
