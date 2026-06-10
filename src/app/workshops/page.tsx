@@ -58,7 +58,7 @@ As South Africa proudly commemorates the 50th Anniversary of June 16, we at Laba
 
             <Link href="https://docs.google.com/forms/d/e/1FAIpQLSdkDUyhjeLQHM7R9Fxey6VMp1qA7UWKo9qAIvgnix99bTeDcw/viewform?usp=sharing&ouid=105392927634406864011">
               <Button className="bg-blue-500 hover:bg-blue-600 text-white">
-                View Details
+                Register
               </Button>
             </Link>
           </div>
