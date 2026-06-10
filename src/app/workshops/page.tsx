@@ -43,7 +43,7 @@ export default function CoursesPage() {
         <div className="grid md:grid-cols-3 gap-8 mt-10">
           {/* Web Dev */}
           <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-lg">
-            <h3 className="text-2xl font-bold mb-3">Youth Month Initiative</h3>
+            <h3 className="text-2xl font-bold mb-3">June 2026 Youth Month Initiative </h3>
             <p className="text-gray-200 mb-4">
 As South Africa proudly commemorates the 50th Anniversary of June 16, we at Laban2tech honour the legacy of our youth by investing in your future. This Youth Month, Laban2tech — in partnership with the Cisco Networking Academy — is offering self-paced online courses and masterclasses to equip you with the skills the future demands.            </p>
 
@@ -56,7 +56,7 @@ As South Africa proudly commemorates the 50th Anniversary of June 16, we at Laba
 />
           
 
-            <Link href="/courses/web-development">
+            <Link href="https://docs.google.com/forms/d/e/1FAIpQLSdkDUyhjeLQHM7R9Fxey6VMp1qA7UWKo9qAIvgnix99bTeDcw/viewform?usp=sharing&ouid=105392927634406864011">
               <Button className="bg-blue-500 hover:bg-blue-600 text-white">
                 View Details
               </Button>
