@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import Image from "next/image"
 import apple from "../assets/apple.png";
 import uii from "../assets/uii.png";
-import crop2 from "../assets/crop2.png";
+import youthh from "../assets/youthh.jpg";
 
 
 
@@ -43,13 +43,12 @@ export default function CoursesPage() {
         <div className="grid md:grid-cols-3 gap-8 mt-10">
           {/* Web Dev */}
           <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-lg">
-            <h3 className="text-2xl font-bold mb-3">Web Development</h3>
+            <h3 className="text-2xl font-bold mb-3">Youth Month Initiative</h3>
             <p className="text-gray-200 mb-4">
-              Learn HTML, CSS, JavaScript, React, Next.js, and backend fundamentals.
-            </p>
+As South Africa proudly commemorates the 50th Anniversary of June 16, we at Laban2tech honour the legacy of our youth by investing in your future. This Youth Month, Laban2tech — in partnership with the Cisco Networking Academy — is offering self-paced online courses and masterclasses to equip you with the skills the future demands.            </p>
 
 <Image
-  src={crop2}
+  src={youthh}
   alt="Web Dev"
   className="rounded-lg mb-4"
   width={400}
@@ -68,7 +67,7 @@ export default function CoursesPage() {
 
 
           {/* Mobile Development */}
-          <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-lg">
+          {/* <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-lg">
             <h3 className="text-2xl font-bold mb-3">Mobile App Development</h3>
             <p className="text-gray-200 mb-4">
               Build Android & iOS apps using React Native and modern tools.
@@ -85,10 +84,10 @@ export default function CoursesPage() {
                 View Details
               </Button>
             </Link>
-          </div>
+          </div> */}
 
           {/* UI/UX */}
-          <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-lg">
+          {/* <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-lg">
             <h3 className="text-2xl font-bold mb-3">UI/UX Design</h3>
             <p className="text-gray-200 mb-4">
               Master design systems, Figma, wireframing, and product workflows.
@@ -105,7 +104,7 @@ export default function CoursesPage() {
                 View Details
               </Button>
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -116,7 +115,7 @@ export default function CoursesPage() {
             <div className="flex flex-col lg:flex-row gap-8">
               <div className="w-full lg:w-1/2">
                 <h3 className="text-2xl font-bold mb-4 text-pink-400">Laban2Tech</h3>
-                <p className="text-blue-200 mb-6">
+                {/* <p className="text-blue-200 mb-6">
                   Subscribe to our newsletter for the latest updates on features and
                   releases.
                 </p>
@@ -127,11 +126,11 @@ export default function CoursesPage() {
                     type="email"
                   />
                   <Button className="bg-pink-600 hover:bg-pink-700">Join</Button>
-                </div>
-                <p className="text-sm text-blue-200">
+                </div> */}
+                {/* <p className="text-sm text-blue-200">
                   By subscribing, you consent to our Privacy Policies and receiving
                   updates from us.
-                </p>
+                </p> */}
               </div>
               <div className="w-full lg:w-1/2 grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>

@@ -55,9 +55,9 @@ function Header() {
           <div className="relative h-10 w-10 flex items-center justify-center rounded-xl bg-slate-900 border border-slate-800 p-1 group-hover:border-indigo-500 transition-colors">
             <Image src={logo} alt="Laban2Tech Logo" className="object-contain" fill />
           </div>
-          <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-300 group-hover:to-indigo-300 transition-colors">
+          {/* <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-300 group-hover:to-indigo-300 transition-colors">
             Laban2tech
-          </span>
+          </span> */}
         </Link>
 
         {/* Navigation Links */}

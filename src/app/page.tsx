@@ -165,7 +165,7 @@ export default function Home() {
               </div>
               <div>
                 <p className="text-3xl font-extrabold text-white">24/7</p>
-                <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mt-1">Resend Integrations</p>
+                <p className="text-xs text-slate-500 font-medium uppercase tracking-wider mt-1">Integrations</p>
               </div>
             </div>
           </div>
@@ -426,13 +426,13 @@ export default function Home() {
                 </ul>
               </div>
 
-              <div className="col-span-2 sm:col-span-1">
+              {/* <div className="col-span-2 sm:col-span-1">
                 <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">Company Address</h4>
                 <p className="text-slate-400 leading-relaxed">
                   Middelburg, Mpumalanga,<br />
                   South Africa
                 </p>
-              </div>
+              </div> */}
             </div>
 
           </div>
