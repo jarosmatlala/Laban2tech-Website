@@ -160,7 +160,7 @@ export default function Laban2techContactForm({ selectedPlan }: ContactFormProps
             </div>
 
             <div className="space-y-6 border-t border-slate-900 pt-8 mt-4">
-              <div className="flex items-center gap-4 group">
+              {/* <div className="flex items-center gap-4 group">
                 <div className="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-indigo-400 group-hover:border-indigo-500/50 transition-colors">
                   <Mail size={20} />
                 </div>
@@ -170,9 +170,9 @@ export default function Laban2techContactForm({ selectedPlan }: ContactFormProps
                     matlalaj67@gmail.com
                   </a>
                 </div>
-              </div>
+              </div> */}
 
-              <div className="flex items-center gap-4 group">
+              {/* <div className="flex items-center gap-4 group">
                 <div className="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-indigo-400 group-hover:border-indigo-500/50 transition-colors">
                   <MapPin size={20} />
                 </div>
@@ -182,7 +182,7 @@ export default function Laban2techContactForm({ selectedPlan }: ContactFormProps
                     Middelburg, Mpumalanga, South Africa
                   </p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -200,7 +200,7 @@ export default function Laban2techContactForm({ selectedPlan }: ContactFormProps
                     </label>
                     <Input
                       type="text"
-                      placeholder="John"
+                      placeholder=""
                       {...form.register("firstName")}
                     />
                     {form.formState.errors.firstName && (
@@ -216,7 +216,7 @@ export default function Laban2techContactForm({ selectedPlan }: ContactFormProps
                     </label>
                     <Input
                       type="text"
-                      placeholder="Doe"
+                      placeholder=""
                       {...form.register("lastName")}
                     />
                     {form.formState.errors.lastName && (

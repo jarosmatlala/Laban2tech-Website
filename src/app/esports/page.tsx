@@ -301,7 +301,7 @@ export default function EsportsPage() {
             </div>
           </div>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-            <p>© 2025 Laban2tech. All rights reserved.</p>
+            <p>© 2026 Laban2tech. All rights reserved.</p>
             {/* <ul className="flex gap-6">
               <li><Link href="/#" className="text-blue-200 hover:text-white underline">Privacy Policy</Link></li>
               <li><Link href="/#" className="text-blue-200 hover:text-white underline">Terms of Service</Link></li>
