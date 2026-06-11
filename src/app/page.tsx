@@ -413,7 +413,7 @@ export default function Home() {
                 <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">Quick Links</h4>
                 <ul className="space-y-3">
                   <li><Link href="/" className="hover:text-white transition-colors">Home</Link></li>
-                  <li><Link href="/courses" className="hover:text-white transition-colors">Courses</Link></li>
+                  {/* <li><Link href="/courses" className="hover:text-white transition-colors">Courses</Link></li> */}
                   <li><Link href="/workshops" className="hover:text-white transition-colors">Workshops</Link></li>
                 </ul>
               </div>

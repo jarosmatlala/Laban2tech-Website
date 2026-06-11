@@ -67,11 +67,11 @@ function Header() {
               Home
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link href="/courses" className="hover:text-white hover:underline underline-offset-4 transition-colors">
               Courses
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link href="/workshops" className="hover:text-white hover:underline underline-offset-4 transition-colors">
               Workshops
