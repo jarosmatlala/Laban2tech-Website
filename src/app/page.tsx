@@ -52,7 +52,7 @@ export default function Home() {
     {
       name: "Starter / Landing Page",
       price: "R4,999",
-      usdPrice: "$275",
+      // usdPrice: "$275",
       description: "Ideal for startups, single campaigns, and basic business portfolios.",
       features: [
         "Single-Page Next.js / React Website",
@@ -67,7 +67,7 @@ export default function Home() {
     {
       name: "Professional Business",
       price: "R12,499",
-      usdPrice: "$690",
+      // usdPrice: "$690",
       description: "Best for established companies requiring multi-page setups and content management.",
       features: [
         "Up to 5 Pages (Home, Services, About, Blog, etc.)",
