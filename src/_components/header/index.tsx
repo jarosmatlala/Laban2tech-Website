@@ -41,9 +41,10 @@ function Header() {
         
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative h-10 w-10 flex items-center justify-center rounded-xl bg-slate-900 border border-slate-800 p-1 group-hover:border-indigo-500 transition-colors">
-            <Image src={logo} alt="Laban2Tech Logo" fill className="object-contain" />
-          </div>
+          <div className="relative h-10 w-10 flex items-center justify-center rounded-xl bg-white border border-slate-800 p-1">
+  <Image src={logo} alt="Laban2Tech Logo" fill className="object-contain" />
+</div>
+
         </Link>
 
         {/* Desktop Navigation */}
